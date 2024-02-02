@@ -2,6 +2,7 @@ package com.vuluu.project.entities;
 
 import com.vuluu.project.entities.enums.ClassStatus;
 import com.vuluu.project.entities.enums.UserStatus;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -27,13 +28,13 @@ import net.bytebuddy.asm.Advice.Local;
 @Setter
 @Getter
 @ToString
-public class Class {
+public class Class implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToMany(mappedBy = "class_user_id")
+  @OneToMany(mappedBy = "classId")
   private Set<ClassUser> classUser;
 
   @ManyToOne

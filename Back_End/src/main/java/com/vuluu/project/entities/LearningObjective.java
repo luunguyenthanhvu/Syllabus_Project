@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,22 +15,22 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@Setter
+@AllArgsConstructor
 @Getter
+@Setter
 @ToString
-public class ClassUser implements Serializable {
+public class LearningObjective implements Serializable {
 
   @Id
+  private String code;
+  @Column(unique = true)
+  private String name;
+  private String type;
+  private String description;
+  @OneToMany(mappedBy = "learningObjective")
+  private Set<SyllabusObjective> syllabusObjectives;
   @ManyToOne
-  @JoinColumn(name = "user_id")
-  private User user;
-
-  @Id
-  @ManyToOne
-  @JoinColumn(name = "class_id")
-  private Class classId;
-
-  private String userType;
+  @JoinColumn(name = "training_content")
+  private TrainingContent trainingContent;
 }

@@ -2,6 +2,7 @@ package com.vuluu.project.entities;
 
 import com.vuluu.project.entities.enums.Gender;
 import com.vuluu.project.entities.enums.UserStatus;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class User {
+public class User implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,9 +61,9 @@ public class User {
 
   private LocalDateTime modifiedDate;
 
-  @OneToMany(mappedBy = "user_id")
+  @OneToMany(mappedBy = "user")
   private Set<TrainingProgram> trainingPrograms;
 
-  @OneToMany(mappedBy = "class_user_id")
+  @OneToMany(mappedBy = "user")
   private Set<ClassUser> classUser;
 }

@@ -1,14 +1,13 @@
 package com.vuluu.project.entities;
 
 import com.vuluu.project.entities.enums.TrainingProgramStatus;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +18,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader.Strategy;
 
 @Entity
 @NoArgsConstructor
@@ -27,7 +25,7 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader.Strategy;
 @Getter
 @Setter
 @ToString
-public class TrainingProgram {
+public class TrainingProgram implements Serializable {
 
   @Id
   @Column(name = "training_program_code")
@@ -54,6 +52,6 @@ public class TrainingProgram {
   private User modifiedBy;
   private LocalDateTime modifiedDate;
 
-  @OneToMany(mappedBy = "training_program_syllabus")
+  @OneToMany(mappedBy = "trainingProgram")
   private Set<TrainingProgramSyllabus> trainingProgramSyllabus;
 }

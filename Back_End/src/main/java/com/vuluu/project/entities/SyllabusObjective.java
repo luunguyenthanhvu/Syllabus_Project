@@ -17,17 +17,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class TrainingProgramSyllabus implements Serializable {
+public class SyllabusObjective implements Serializable {
 
   @Id
   @ManyToOne
-  @JoinColumn(name = "syllabus_topic_code")
+  @JoinColumn(name = "topic_code")
   private Syllabus syllabus;
 
   @Id
   @ManyToOne
-  @JoinColumn(name = "training_program_code")
-  private TrainingProgram trainingProgram;
-
-  private String sequence;
+  @JoinColumn(name = "objective_code")
+  private LearningObjective learningObjective;
 }

@@ -2,6 +2,7 @@ package com.vuluu.project.entities;
 
 import com.vuluu.project.entities.enums.ERole;
 import com.vuluu.project.entities.enums.EUserPermission;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,7 +21,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserPermission {
+public class UserPermission implements Serializable {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;

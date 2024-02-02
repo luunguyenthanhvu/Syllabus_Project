@@ -1,6 +1,7 @@
 package com.vuluu.project.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,17 +18,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class TrainingProgramSyllabus implements Serializable {
+public class TrainingUnit implements Serializable {
 
   @Id
+  private String unitCode;
+  @Column(unique = true)
+  private String unitName;
+  private int dayNumber;
   @ManyToOne
-  @JoinColumn(name = "syllabus_topic_code")
+  @JoinColumn(name = "topic_code")
   private Syllabus syllabus;
 
-  @Id
-  @ManyToOne
-  @JoinColumn(name = "training_program_code")
-  private TrainingProgram trainingProgram;
-
-  private String sequence;
 }
