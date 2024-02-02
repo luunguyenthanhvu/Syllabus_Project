@@ -5,6 +5,7 @@ import com.vuluu.project.entities.enums.UserStatus;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -33,8 +34,8 @@ public class User implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private String name;
-
+  private String username;
+  @Column(unique = true)
   private String email;
 
   private String password;
