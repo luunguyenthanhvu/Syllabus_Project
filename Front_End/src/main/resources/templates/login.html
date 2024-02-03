@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <link rel="stylesheet" href="../static/css/login.css">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="logo">
+    <a href="#">
+      <img src="../static/img/logo.png" alt="">
+    </a>
+  </div>
+  <div class="user">
+    <div class="unit-gate">
+      <img src="../static/img/unit_gate.png" alt="">
+      <span>unitGate</span>
+    </div>
+  </div>
+</header>
+<!-- End header -->
+<div class="img wrapper">
+  <div class="login-form">
+    <form>
+      <div style="width: 515px; margin: 0 auto">
+        <div style="display: flex; flex-direction: column ">
+          <h1>FPT Fresh Academy <br>Training Management</h1>
+        </div>
+        <div
+            style="width: 515px;height: 19px;font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;display: flex;align-items: center; justify-content: center; text-align: center; margin: 0 auto">
+          <p>If you don't have the account, please contact FA.HCM@fsort.com.vn</p>
+        </div>
+      </div>
+      <div class="input" style="">
+        <input type="email" style="margin-bottom: 20px; ">
+        <input type="password">
+      </div>
+      <div class="action">
+        <div class="forgot-password">
+          <a href="#">Forgot password?</a>
+        </div>
+        <button>Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
+<footer>
+  <span class="font_16">Copyright @2022 BA Warrior. All right reserved</span>
+</footer>
+
+<script>
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e) => {
+      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+      arrowParent.classList.toggle("showMenu");
+    });
+  }
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+  });
+</script>
+</body>
+</html>
