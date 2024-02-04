@@ -33,8 +33,16 @@ public class UserServiceImpl implements IUserService {
   private MyUtils myUtils;
 
   @Override
+  public void createUser(User user) {
+    if (userRepository.findByEmail(user.getEmail()) == null) {
+      userRepository.save(user);
+    }
+  }
+
+  @Override
   public DResponseUser login(String email, String password, HttpServletResponse response) {
-    User user = userRepository.findByEmail(email);
+    User user = userRepository.findByEmailWithUserPermission(email);
+
     if (user == null || !bCryptPasswordEncoder.matches(password, user.getPassword())) {
       return null;
     }

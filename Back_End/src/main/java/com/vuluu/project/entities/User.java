@@ -69,4 +69,11 @@ public class User implements Serializable {
 
   @OneToMany(mappedBy = "user")
   private Set<ClassUser> classUser;
+
+  public User(String username, String email, String password, UserPermission userPermission) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.userPermission = userPermission;
+  }
 }

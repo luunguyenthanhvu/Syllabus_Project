@@ -18,9 +18,9 @@ public class TokenAuthenticationService {
   static final String HEADER_STRING = "Authorization";
   private static Set<GrantedAuthority> grantedAuthorities = null;
 
-  public static void addAuthentication(HttpServletResponse res, String username,
+  public static void addAuthentication(HttpServletResponse res, String email,
       Set<GrantedAuthority> grantedAuthorities) {
-    String JWT = Jwts.builder().setSubject(username)
+    String JWT = Jwts.builder().setSubject(email)
         .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)).signWith(
             SignatureAlgorithm.HS512, SECRET).compact();
     res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
@@ -31,10 +31,10 @@ public class TokenAuthenticationService {
     String token = request.getHeader(HEADER_STRING);
     if (token != null) {
       // parse the token.
-      String username = Jwts.parser().setSigningKey(SECRET)
+      String email = Jwts.parser().setSigningKey(SECRET)
           .parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody().getSubject();
-      return username != null ?
-          new UsernamePasswordAuthenticationToken(username, null,
+      return email != null ?
+          new UsernamePasswordAuthenticationToken(email, null,
               TokenAuthenticationService.grantedAuthorities) : null;
     }
     return null;

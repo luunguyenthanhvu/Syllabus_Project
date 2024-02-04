@@ -44,4 +44,14 @@ public class UserPermission implements Serializable {
 
   @Enumerated(EnumType.STRING)
   private EUserPermission userManagement;
+
+  public UserPermission(ERole role, EUserPermission syllabus, EUserPermission trainingProgram,
+      EUserPermission classes, EUserPermission learningMaterial, EUserPermission userManagement) {
+    this.role = role;
+    this.syllabus = syllabus;
+    this.trainingProgram = trainingProgram;
+    this.classes = classes;
+    this.learningMaterial = learningMaterial;
+    this.userManagement = userManagement;
+  }
 }
