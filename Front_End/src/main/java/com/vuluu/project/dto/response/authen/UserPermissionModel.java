@@ -1,7 +1,8 @@
 package com.vuluu.project.dto.response.authen;
 
-import com.vuluu.project.entities.enums.ERole;
-import com.vuluu.project.entities.enums.EUserPermission;
+
+import com.vuluu.project.dto.enums.ERole;
+import com.vuluu.project.dto.enums.EUserPermission;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import lombok.Getter;

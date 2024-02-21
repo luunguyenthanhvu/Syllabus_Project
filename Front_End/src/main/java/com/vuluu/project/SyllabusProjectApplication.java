@@ -1,13 +1,13 @@
-package com.example.front_end;
+package com.vuluu.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FrontEndApplication {
+public class SyllabusProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FrontEndApplication.class, args);
+		SpringApplication.run(SyllabusProjectApplication.class, args);
 	}
 
 }

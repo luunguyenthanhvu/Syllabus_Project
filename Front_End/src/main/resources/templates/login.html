@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- Coding by CodingNepal | www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Drop Down Sidebar Menu | CodingLab </title>
-  <link rel="stylesheet" href="../static/css/login.css">
+  <title> Login to Syllabus </title>
+  <link rel="stylesheet" th:href="@{/css/login.css}">
   <!-- Boxicons CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,18 +13,18 @@
 <header>
   <div class="logo">
     <a href="#">
-      <img src="../static/img/logo.png" alt="">
+      <img th:src="@{/static/img/logo.png}" alt="">
     </a>
   </div>
   <div class="user">
     <div class="unit-gate">
-      <img src="../static/img/unit_gate.png" alt="">
+      <img th:src="@{/static/img/unit_gate.png}" alt="">
       <span>unitGate</span>
     </div>
   </div>
 </header>
 <!-- End header -->
-<div class="img wrapper">
+<div class="img wrapper" style="background-image: url('/static/img/login.png');">
   <div class="login-form">
     <form>
       <div style="width: 515px; margin: 0 auto">
@@ -55,19 +54,19 @@
 </footer>
 
 <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e) => {
-      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  });
+  // let arrow = document.querySelectorAll(".arrow");
+  // for (var i = 0; i < arrow.length; i++) {
+  //   arrow[i].addEventListener("click", (e) => {
+  //     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+  //     arrowParent.classList.toggle("showMenu");
+  //   });
+  // }
+  // let sidebar = document.querySelector(".sidebar");
+  // let sidebarBtn = document.querySelector(".bx-menu");
+  // console.log(sidebarBtn);
+  // sidebarBtn.addEventListener("click", () => {
+  //   sidebar.classList.toggle("close");
+  // });
 </script>
 </body>
 </html>

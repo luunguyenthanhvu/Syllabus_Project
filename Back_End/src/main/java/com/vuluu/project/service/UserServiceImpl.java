@@ -3,6 +3,7 @@ package com.vuluu.project.service;
 import com.vuluu.project.dto.request.authen.RegisterModel;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
 import com.vuluu.project.entities.User;
+import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.repositories.UserRepository;
 import com.vuluu.project.service.template.IEmailService;
 import com.vuluu.project.service.template.IUserService;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +48,7 @@ public class UserServiceImpl implements IUserService {
     if (user == null || !bCryptPasswordEncoder.matches(password, user.getPassword())) {
       return null;
     }
-    Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+    Set<GrantedAuthority> grantedAuthorities = getUserAuthorities(user.getUserPermission());
 //    Set<Role> roles = user.getRoles();
 //    roles.forEach(role -> {
 //      grantedAuthorities.add(new SimpleGrantedAuthority(role.getName().toString()));
@@ -56,6 +58,19 @@ public class UserServiceImpl implements IUserService {
     String authorizationString = response.getHeader("Authorization");
     responseUser.setToken(authorizationString);
     return responseUser;
+  }
+
+  private static Set<GrantedAuthority> getUserAuthorities(UserPermission userPermission) {
+    Set<GrantedAuthority> authorities = new HashSet<>();
+
+    // Thêm quyền hạn dựa trên UserPermission
+    authorities.add(new SimpleGrantedAuthority(userPermission.getSyllabus().toString()));
+    authorities.add(new SimpleGrantedAuthority(userPermission.getTrainingProgram().toString()));
+    authorities.add(new SimpleGrantedAuthority(userPermission.getClasses().toString()));
+    authorities.add(new SimpleGrantedAuthority(userPermission.getLearningMaterial().toString()));
+    authorities.add(new SimpleGrantedAuthority(userPermission.getUserManagement().toString()));
+
+    return authorities;
   }
 
   @Override

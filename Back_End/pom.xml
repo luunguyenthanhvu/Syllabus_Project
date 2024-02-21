@@ -9,13 +9,13 @@
     <version>2.7.12</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.vuluu</groupId>
+  <groupId>com.vuluu.project</groupId>
   <artifactId>SyllabusProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>SyllabusProject</name>
   <description>My Backend Syllabus</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <dependency>

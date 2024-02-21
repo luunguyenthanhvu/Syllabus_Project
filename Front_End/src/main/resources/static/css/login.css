@@ -460,7 +460,7 @@ footer {
   background-size: 100% 100%; /* Đảm bảo hiển thị toàn bộ chiều ngang */
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../img/login.png");
+  background-image: url("/static/img/login.png");
   position: relative; /* Đặt vị trí tương đối cho .img */
   margin-bottom: -12px;
   padding: 20px;
@@ -538,7 +538,6 @@ footer {
 }
 
 
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -547,9 +546,11 @@ body {
 .wrapper {
   flex-grow: 1;
 }
+
 button {
   cursor: pointer;
 }
+
 button:hover {
   background: #FFFFFF;
   color: #2D3748;
