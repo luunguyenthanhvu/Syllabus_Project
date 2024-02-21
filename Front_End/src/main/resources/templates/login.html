@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
   <title> Login to Syllabus </title>
@@ -26,7 +26,7 @@
 <!-- End header -->
 <div class="img wrapper" style="background-image: url('/static/img/login.png');">
   <div class="login-form">
-    <form>
+    <form method="post" th:object="${loginForm}" th:action="@{login}">
       <div style="width: 515px; margin: 0 auto">
         <div style="display: flex; flex-direction: column ">
           <h1>FPT Fresh Academy <br>Training Management</h1>
@@ -37,8 +37,8 @@
         </div>
       </div>
       <div class="input" style="">
-        <input type="email" style="margin-bottom: 20px; ">
-        <input type="password">
+        <input th:field="*{email}" type="email" style="margin-bottom: 20px; ">
+        <input th:field="*{password}" type="password">
       </div>
       <div class="action">
         <div class="forgot-password">
@@ -52,21 +52,5 @@
 <footer>
   <span class="font_16">Copyright @2022 BA Warrior. All right reserved</span>
 </footer>
-
-<script>
-  // let arrow = document.querySelectorAll(".arrow");
-  // for (var i = 0; i < arrow.length; i++) {
-  //   arrow[i].addEventListener("click", (e) => {
-  //     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-  //     arrowParent.classList.toggle("showMenu");
-  //   });
-  // }
-  // let sidebar = document.querySelector(".sidebar");
-  // let sidebarBtn = document.querySelector(".bx-menu");
-  // console.log(sidebarBtn);
-  // sidebarBtn.addEventListener("click", () => {
-  //   sidebar.classList.toggle("close");
-  // });
-</script>
 </body>
 </html>
