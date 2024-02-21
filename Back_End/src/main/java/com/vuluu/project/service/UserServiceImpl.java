@@ -29,8 +29,10 @@ public class UserServiceImpl implements IUserService {
 
   @Autowired
   private ModelMapper modelMapper;
+
   @Autowired
   private IEmailService emailService;
+
   @Autowired
   private MyUtils myUtils;
 
@@ -49,10 +51,7 @@ public class UserServiceImpl implements IUserService {
       return null;
     }
     Set<GrantedAuthority> grantedAuthorities = getUserAuthorities(user.getUserPermission());
-//    Set<Role> roles = user.getRoles();
-//    roles.forEach(role -> {
-//      grantedAuthorities.add(new SimpleGrantedAuthority(role.getName().toString()));
-//    });
+
     DResponseUser responseUser = modelMapper.map(user, DResponseUser.class);
     TokenAuthenticationService.addAuthentication(response, user.getUsername(), grantedAuthorities);
     String authorizationString = response.getHeader("Authorization");
@@ -63,7 +62,7 @@ public class UserServiceImpl implements IUserService {
   private static Set<GrantedAuthority> getUserAuthorities(UserPermission userPermission) {
     Set<GrantedAuthority> authorities = new HashSet<>();
 
-    // Thêm quyền hạn dựa trên UserPermission
+    // add authorities from user permission
     authorities.add(new SimpleGrantedAuthority(userPermission.getSyllabus().toString()));
     authorities.add(new SimpleGrantedAuthority(userPermission.getTrainingProgram().toString()));
     authorities.add(new SimpleGrantedAuthority(userPermission.getClasses().toString()));
