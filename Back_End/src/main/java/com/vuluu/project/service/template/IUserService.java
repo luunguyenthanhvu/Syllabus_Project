@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 public interface IUserService {
   void createUser(User user);
   DResponseUser login(String email, String password, HttpServletResponse response);
-
   DResponseUser registerUser(RegisterModel registerModel);
+
+
 }

@@ -67,7 +67,7 @@ public class SwaggerConfig {
     ApiInfo apiInfo = new ApiInfo("Tutorial REST API", "API For Tutorial", "API Ver1.0",
         "Terms of service",
         new Contact("Vu Luu", "https://www.facebook.com/profile.php?id=100048027210422",
-            "luunguuenthanhvu1q2@gmail.com"), "License of API",
+            "luunguuenthanhvu123@gmail.com"), "License of API",
         "API license URL", Collections.emptyList());
     return apiInfo;
   }
