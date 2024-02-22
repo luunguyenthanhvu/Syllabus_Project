@@ -1,18 +1,23 @@
 package com.vuluu.project.service;
 
 import com.vuluu.project.dto.request.authen.RegisterModel;
+import com.vuluu.project.dto.request.forcreate.CRequestUser;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
 import com.vuluu.project.entities.User;
 import com.vuluu.project.entities.UserPermission;
+import com.vuluu.project.entities.enums.UserStatus;
 import com.vuluu.project.repositories.UserRepository;
 import com.vuluu.project.service.template.IEmailService;
 import com.vuluu.project.service.template.IUserService;
 import com.vuluu.project.utils.MyUtils;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,6 +34,7 @@ public class UserServiceImpl implements IUserService {
 
   @Autowired
   private ModelMapper modelMapper;
+
 
   @Autowired
   private IEmailService emailService;
@@ -82,6 +88,8 @@ public class UserServiceImpl implements IUserService {
     User user = new User();
     user.setUsername(registerModel.getUsername());
     user.setEmail(registerModel.getEmail());
+    user.setCreatedDate(LocalDateTime.now());
+    user.setStatus(UserStatus.ACTIVE);
 
     // generate new random pass
     String password = myUtils.generateRandomPassword();
@@ -90,10 +98,52 @@ public class UserServiceImpl implements IUserService {
     userRepository.save(user);
 
     // send password to user email
-    emailService.sendPasswordToEmail(registerModel.getEmail(), password);
+    emailService.sendUserAccount(user.getEmail(), user.getUsername(), password);
     // map to response
     DResponseUser responseUser = modelMapper.map(user, DResponseUser.class);
 
     return responseUser;
+  }
+
+  @Override
+  public DResponseUser createUser(CRequestUser cRequestUser, HttpServletRequest request) {
+    //get user info from token
+    Authentication authentication = TokenAuthenticationService.getAuthentication(request);
+    if (authentication == null) {
+      return null;
+    }
+
+    // if user exists
+    if (userRepository.findByEmail(cRequestUser.getEmail()) != null) {
+      return null;
+    }
+
+    String loggedInUserEmail = authentication.getName();
+
+    // get user logged
+    User loggedUser = userRepository.findByEmail(loggedInUserEmail);
+    User user = modelMapper.map(cRequestUser, User.class);
+    // set user create by, modify by
+    user.setCreatedBy(loggedUser);
+    user.setModifiedBy(user);
+
+    // set create date, modify date
+    user.setCreatedDate(LocalDateTime.now());
+    user.setModifiedDate(LocalDateTime.now());
+
+    // generate auto password
+    String password = myUtils.generateRandomPassword();
+    user.setPassword(bCryptPasswordEncoder.encode(password));
+
+    // set status
+    user.setStatus(UserStatus.ACTIVE);
+
+    // save user to database
+    userRepository.save(user);
+
+    // send email to user
+    emailService.sendUserAccount(user.getEmail(), user.getUsername(), password);
+
+    return modelMapper.map(user, DResponseUser.class);
   }
 }

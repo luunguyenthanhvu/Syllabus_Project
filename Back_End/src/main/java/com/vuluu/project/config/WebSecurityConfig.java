@@ -26,8 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable().authorizeRequests()
         // No need authentication.
-        .antMatchers("/user/login", "/user/register", "/role/create").permitAll()
-        .antMatchers("/product/**", "/department/**").hasAnyAuthority("ADMIN")
+        .antMatchers("/user/login", "/user/register", "/admin/**", "/role/create").permitAll()
+//        .antMatchers("/admin/**").hasAnyAuthority("SUPPER_ADMIN")
         .antMatchers("/product/getall", "/product/get/*", "/department/getall", "/department/get/*")
         .hasAnyAuthority("CUSTOMER")
         // Need authentication.

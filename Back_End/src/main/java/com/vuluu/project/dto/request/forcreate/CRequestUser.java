@@ -1,11 +1,15 @@
 package com.vuluu.project.dto.request.forcreate;
 
 import com.vuluu.project.entities.enums.ERole;
+import com.vuluu.project.entities.enums.Gender;
+import com.vuluu.project.entities.enums.UserStatus;
 import java.time.LocalDateTime;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -37,6 +41,14 @@ public class CRequestUser {
   @Pattern(regexp = "\\d{10,15}", message = "Phone number must contain only digits")
   private String phone;
 
+  @NotBlank(message = "Date of birth is required")
+  @NotNull(message = "Date of birth is required")
+  @Past(message = "Date of birth must be in the past")
   private LocalDateTime dob;
 
+  @Enumerated(EnumType.STRING)
+  private Gender gender;
+
+  @Enumerated(EnumType.STRING)
+  private UserStatus status;
 }

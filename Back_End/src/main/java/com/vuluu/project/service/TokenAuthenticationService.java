@@ -1,17 +1,14 @@
 package com.vuluu.project.service;
 
-import com.vuluu.project.entities.UserPermission;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class TokenAuthenticationService {
 
@@ -29,6 +26,7 @@ public class TokenAuthenticationService {
     res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
     TokenAuthenticationService.grantedAuthorities = grantedAuthorities;
   }
+
   public static Authentication getAuthentication(HttpServletRequest request) {
     String token = request.getHeader(HEADER_STRING);
     if (token != null) {

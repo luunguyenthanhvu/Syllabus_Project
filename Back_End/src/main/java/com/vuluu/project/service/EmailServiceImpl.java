@@ -1,13 +1,10 @@
 package com.vuluu.project.service;
 
 import com.vuluu.project.service.template.IEmailService;
-import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,12 +14,13 @@ public class EmailServiceImpl implements IEmailService {
   private JavaMailSender emailSender;
 
   @Override
-  public void sendPasswordToEmail(String email, String password) {
+  public void sendUserAccount(String email, String username, String password) {
     SimpleMailMessage message = new SimpleMailMessage();
     message.setFrom("vuluudragonslayer@gmail.com");
     message.setTo(email);
     message.setSubject("Your Password Account");
-    message.setText("Your password is: " + password);
+    message.setText(
+        "Your account " + username + " have been modified, your password is: " + password);
 
     try {
       emailSender.send(message);
