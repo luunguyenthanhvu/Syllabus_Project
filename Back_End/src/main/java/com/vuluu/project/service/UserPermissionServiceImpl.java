@@ -1,11 +1,13 @@
 package com.vuluu.project.service;
 
+import com.vuluu.project.dto.request.forupdate.UPermission;
 import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.ERole;
 import com.vuluu.project.entities.enums.EUserPermission;
 import com.vuluu.project.repositories.UserPermissionRepository;
 import com.vuluu.project.service.template.IUserPermissionService;
 import java.util.List;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class UserPermissionServiceImpl implements IUserPermissionService {
 
   @Autowired
   private UserPermissionRepository userPermissionRepository;
+
+  @Autowired
+  private ModelMapper modelMapper;
 
   @Override
   public void createDefaultUserPermission() {
@@ -51,6 +56,14 @@ public class UserPermissionServiceImpl implements IUserPermissionService {
 
   @Override
   public List<UserPermission> findAll() {
+    return userPermissionRepository.findAll();
+  }
+
+  @Override
+  public List<UserPermission> updatePermission(List<UPermission> uPermission) {
+    uPermission.forEach(
+        n -> userPermissionRepository.save(modelMapper.map(n, UserPermission.class)));
+
     return userPermissionRepository.findAll();
   }
 }

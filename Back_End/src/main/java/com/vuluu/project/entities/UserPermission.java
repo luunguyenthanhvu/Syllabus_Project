@@ -17,7 +17,6 @@ import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -44,6 +43,14 @@ public class UserPermission implements Serializable {
 
   @Enumerated(EnumType.STRING)
   private EUserPermission userManagement;
+
+  public UserPermission() {
+    this.syllabus = EUserPermission.CREATE;
+    this.trainingProgram = EUserPermission.CREATE;
+    this.classes = EUserPermission.CREATE;
+    this.learningMaterial = EUserPermission.CREATE;
+    this.userManagement = EUserPermission.CREATE;
+  }
 
   public UserPermission(ERole role, EUserPermission syllabus, EUserPermission trainingProgram,
       EUserPermission classes, EUserPermission learningMaterial, EUserPermission userManagement) {

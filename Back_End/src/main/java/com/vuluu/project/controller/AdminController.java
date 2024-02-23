@@ -1,6 +1,7 @@
 package com.vuluu.project.controller;
 
 import com.vuluu.project.dto.request.forcreate.CRequestUser;
+import com.vuluu.project.dto.request.forupdate.UPermission;
 import com.vuluu.project.dto.request.forupdate.URequestUser;
 import com.vuluu.project.dto.request.forupdate.UUserPermission;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
@@ -71,10 +72,15 @@ public class AdminController {
     return ResponseEntity.ok(dResponseUser);
   }
 
-  @GetMapping(value = "/get/user-permission-list")
+  @GetMapping(value = "/get/permission-list")
   public ResponseEntity<List<UserPermission>> getListUserPermission() {
     List<UserPermission> userPermissionList = userPermissionService.findAll();
     return ResponseEntity.ok().body(userPermissionList);
   }
 
+  @PutMapping(value = "/update/permission")
+  public ResponseEntity<List<UserPermission>> updatePermission(@RequestBody List<UPermission> uPermissionList) {
+    List<UserPermission> userPermissionList = userPermissionService.updatePermission(uPermissionList);
+    return ResponseEntity.ok().body(userPermissionList);
+  }
 }
