@@ -45,8 +45,8 @@ public class UserPermissionServiceImpl implements IUserPermissionService {
   }
 
   @Override
-  public UserPermission findByRole(String role) {
-    return userPermissionRepository.findByRole(role.toUpperCase());
+  public UserPermission findByRole(ERole role) {
+    return userPermissionRepository.findByRole(role);
   }
 
   @Override

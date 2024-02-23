@@ -8,6 +8,7 @@ import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.UserStatus;
 import com.vuluu.project.repositories.UserRepository;
 import com.vuluu.project.service.template.IEmailService;
+import com.vuluu.project.service.template.IUserPermissionService;
 import com.vuluu.project.service.template.IUserService;
 import com.vuluu.project.utils.MyUtils;
 import java.time.LocalDateTime;
@@ -35,6 +36,8 @@ public class UserServiceImpl implements IUserService {
   @Autowired
   private ModelMapper modelMapper;
 
+  @Autowired
+  private IUserPermissionService userPermissionService;
 
   @Autowired
   private IEmailService emailService;
@@ -59,7 +62,7 @@ public class UserServiceImpl implements IUserService {
     Set<GrantedAuthority> grantedAuthorities = getUserAuthorities(user.getUserPermission());
 
     DResponseUser responseUser = modelMapper.map(user, DResponseUser.class);
-    TokenAuthenticationService.addAuthentication(response, user.getUsername(), grantedAuthorities);
+    TokenAuthenticationService.addAuthentication(response, user.getEmail(), grantedAuthorities);
     String authorizationString = response.getHeader("Authorization");
     responseUser.setToken(authorizationString);
     return responseUser;
@@ -119,13 +122,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     String loggedInUserEmail = authentication.getName();
-
     // get user logged
     User loggedUser = userRepository.findByEmail(loggedInUserEmail);
     User user = modelMapper.map(cRequestUser, User.class);
     // set user create by, modify by
     user.setCreatedBy(loggedUser);
-    user.setModifiedBy(user);
+    user.setModifiedBy(loggedUser);
 
     // set create date, modify date
     user.setCreatedDate(LocalDateTime.now());
@@ -137,6 +139,10 @@ public class UserServiceImpl implements IUserService {
 
     // set status
     user.setStatus(UserStatus.ACTIVE);
+
+    // set user permission
+    user.setUserPermission(userPermissionService.findByRole(
+        cRequestUser.getUserType()));
 
     // save user to database
     userRepository.save(user);

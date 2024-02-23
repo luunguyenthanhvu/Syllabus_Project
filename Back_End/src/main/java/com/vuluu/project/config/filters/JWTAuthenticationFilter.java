@@ -23,6 +23,7 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
 
     if (authentication != null) {
       System.out.println(authentication.getAuthorities());
+      System.out.println(authentication.getName());
     }
 
     filterChain.doFilter(servletRequest, servletResponse);

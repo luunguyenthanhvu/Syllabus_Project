@@ -31,7 +31,7 @@ public class CRequestUser {
 
   @NotBlank
   @Size(min = 6, max = 50, message = "user name must between 6 and 50")
-  private String name;
+  private String username;
 
   @Email
   private String email;

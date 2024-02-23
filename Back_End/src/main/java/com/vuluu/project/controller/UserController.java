@@ -3,6 +3,7 @@ package com.vuluu.project.controller;
 import com.vuluu.project.dto.request.authen.LoginModel;
 import com.vuluu.project.dto.request.authen.RegisterModel;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
+import com.vuluu.project.service.TokenAuthenticationService;
 import com.vuluu.project.service.template.IUserService;
 import io.swagger.annotations.Api;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,7 @@ public class UserController {
     String email = loginModel.getEmail();
     String password = loginModel.getPassword();
     DResponseUser user = userService.login(email, password, response);
+
     if (user != null) {
       return ResponseEntity.ok().body(user);
     } else {
