@@ -3,6 +3,7 @@ package com.vuluu.project.service;
 import com.vuluu.project.dto.request.authen.RegisterModel;
 import com.vuluu.project.dto.request.forcreate.CRequestUser;
 import com.vuluu.project.dto.request.forupdate.URequestUser;
+import com.vuluu.project.dto.request.forupdate.UUserPermission;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
 import com.vuluu.project.entities.User;
 import com.vuluu.project.entities.UserPermission;
@@ -152,7 +153,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
-  public DResponseUser updateUser(URequestUser uRequestUser, HttpServletRequest request) {
+  public DResponseUser updateUserInfo(URequestUser uRequestUser, HttpServletRequest request) {
     //get user info from token
     Authentication authentication = TokenAuthenticationService.getAuthentication(request);
     if (authentication == null) {
@@ -173,15 +174,31 @@ public class UserServiceImpl implements IUserService {
     user.setModifiedDate(LocalDateTime.now());
     user.setModifiedBy(loggedUser);
 
-    int rowUpdate = userRepository.updateUserInfo(user.getUsername(), user.getPhone(),
+    int rowUpdated = userRepository.updateUserInfo(user.getUsername(), user.getPhone(),
         user.getDob(),
         user.getGender(), user.getStatus(), user.getModifiedBy(), user.getModifiedDate(),
         user.getId());
 
-    if (rowUpdate != 1) {
+    if (rowUpdated != 1) {
       return null;
     }
 
     return modelMapper.map(user, DResponseUser.class);
+  }
+
+  @Override
+  public DResponseUser updateUserUserPermission(UUserPermission uUserPermission) {
+    // if user not exists
+    if (userRepository.findById(uUserPermission.getId()) == null) {
+      return null;
+    }
+    UserPermission userPermission = userPermissionService.findByRole(uUserPermission.getRole());
+    int rowUpdated = userRepository.updateUserPermission(userPermission, uUserPermission.getId());
+
+    if (rowUpdated != 1) {
+      return null;
+    }
+
+    return modelMapper.map(uUserPermission, DResponseUser.class);
   }
 }

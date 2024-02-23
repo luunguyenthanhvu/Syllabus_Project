@@ -2,6 +2,7 @@ package com.vuluu.project.controller;
 
 import com.vuluu.project.dto.request.forcreate.CRequestUser;
 import com.vuluu.project.dto.request.forupdate.URequestUser;
+import com.vuluu.project.dto.request.forupdate.UUserPermission;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
 import com.vuluu.project.service.template.IUserService;
 import io.swagger.annotations.Api;
@@ -46,7 +47,20 @@ public class AdminController {
     if (bindingResult.hasErrors()) {
       return ResponseEntity.badRequest().body(null);
     }
-    DResponseUser dResponseUser = userService.updateUser(uRequestUser, request);
+
+    DResponseUser dResponseUser = userService.updateUserInfo(uRequestUser, request);
+    return ResponseEntity.ok(dResponseUser);
+  }
+
+  @PutMapping(value = "/update/user-permission/{id}")
+  public ResponseEntity<DResponseUser> updateUserPermission(
+      @Valid @RequestBody UUserPermission uUserPermission, BindingResult bindingResult) {
+    // check validate
+    if (bindingResult.hasErrors()) {
+      return ResponseEntity.badRequest().body(null);
+    }
+
+    DResponseUser dResponseUser = userService.updateUserUserPermission(uUserPermission);
     return ResponseEntity.ok(dResponseUser);
   }
 }
