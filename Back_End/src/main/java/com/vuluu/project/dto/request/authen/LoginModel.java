@@ -11,7 +11,13 @@ import lombok.ToString;
 @NoArgsConstructor
 public class LoginModel {
 
+  /**
+   * Login user email
+   */
   private String email;
 
+  /**
+   * Login user password
+   */
   private String password;
 }

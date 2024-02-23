@@ -2,6 +2,7 @@ package com.vuluu.project.service;
 
 import com.vuluu.project.dto.request.authen.RegisterModel;
 import com.vuluu.project.dto.request.forcreate.CRequestUser;
+import com.vuluu.project.dto.request.forupdate.URequestUser;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
 import com.vuluu.project.entities.User;
 import com.vuluu.project.entities.UserPermission;
@@ -116,7 +117,7 @@ public class UserServiceImpl implements IUserService {
       return null;
     }
 
-    // if user exists
+    // if user not exists
     if (userRepository.findByEmail(cRequestUser.getEmail()) != null) {
       return null;
     }
@@ -137,9 +138,6 @@ public class UserServiceImpl implements IUserService {
     String password = myUtils.generateRandomPassword();
     user.setPassword(bCryptPasswordEncoder.encode(password));
 
-    // set status
-    user.setStatus(UserStatus.ACTIVE);
-
     // set user permission
     user.setUserPermission(userPermissionService.findByRole(
         cRequestUser.getUserType()));
@@ -149,6 +147,40 @@ public class UserServiceImpl implements IUserService {
 
     // send email to user
     emailService.sendUserAccount(user.getEmail(), user.getUsername(), password);
+
+    return modelMapper.map(user, DResponseUser.class);
+  }
+
+  @Override
+  public DResponseUser updateUser(URequestUser uRequestUser, HttpServletRequest request) {
+    //get user info from token
+    Authentication authentication = TokenAuthenticationService.getAuthentication(request);
+    if (authentication == null) {
+      return null;
+    }
+
+    // if user not exists
+    if (userRepository.findById(uRequestUser.getId()) == null) {
+      return null;
+    }
+
+    String loggedInUserEmail = authentication.getName();
+    // get user logged
+    User loggedUser = userRepository.findByEmail(loggedInUserEmail);
+    User user = modelMapper.map(uRequestUser, User.class);
+
+    // update modified date, modified user
+    user.setModifiedDate(LocalDateTime.now());
+    user.setModifiedBy(loggedUser);
+
+    int rowUpdate = userRepository.updateUserInfo(user.getUsername(), user.getPhone(),
+        user.getDob(),
+        user.getGender(), user.getStatus(), user.getModifiedBy(), user.getModifiedDate(),
+        user.getId());
+
+    if (rowUpdate != 1) {
+      return null;
+    }
 
     return modelMapper.map(user, DResponseUser.class);
   }
