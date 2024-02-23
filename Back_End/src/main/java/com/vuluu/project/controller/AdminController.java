@@ -4,13 +4,17 @@ import com.vuluu.project.dto.request.forcreate.CRequestUser;
 import com.vuluu.project.dto.request.forupdate.URequestUser;
 import com.vuluu.project.dto.request.forupdate.UUserPermission;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
+import com.vuluu.project.entities.UserPermission;
+import com.vuluu.project.service.template.IUserPermissionService;
 import com.vuluu.project.service.template.IUserService;
 import io.swagger.annotations.Api;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +28,9 @@ public class AdminController {
 
   @Autowired
   private IUserService userService;
+
+  @Autowired
+  private IUserPermissionService userPermissionService;
 
   @PostMapping(value = "/add/new-user")
   public ResponseEntity<DResponseUser> addNewUser(@Valid @RequestBody CRequestUser cRequestUser,
@@ -63,4 +70,11 @@ public class AdminController {
     DResponseUser dResponseUser = userService.updateUserUserPermission(uUserPermission);
     return ResponseEntity.ok(dResponseUser);
   }
+
+  @GetMapping(value = "/get/user-permission-list")
+  public ResponseEntity<List<UserPermission>> getListUserPermission() {
+    List<UserPermission> userPermissionList = userPermissionService.findAll();
+    return ResponseEntity.ok().body(userPermissionList);
+  }
+
 }
