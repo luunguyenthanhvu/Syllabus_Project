@@ -13,18 +13,18 @@
 <header>
   <div class="logo">
     <a href="#">
-      <img th:src="@{/static/img/logo.png}" alt="">
+      <img th:src="@{/img/logo.png}" alt="">
     </a>
   </div>
   <div class="user">
     <div class="unit-gate">
-      <img th:src="@{/static/img/unit_gate.png}" alt="">
+      <img th:src="@{/img/unit_gate.png}" alt="">
       <span>unitGate</span>
     </div>
   </div>
 </header>
 <!-- End header -->
-<div class="img wrapper" style="background-image: url('/static/img/login.png');">
+<div class="img wrapper">
   <div class="login-form">
     <form method="post" th:object="${loginForm}" th:action="@{login}">
       <div style="width: 515px; margin: 0 auto">

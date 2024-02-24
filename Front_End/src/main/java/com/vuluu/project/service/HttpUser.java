@@ -22,6 +22,7 @@ public class HttpUser {
     HttpBase<LoginForm, DResponseUser> httpBase = new HttpBase<>();
     DResponseUser dResponseUser = httpBase.postToAPI(loginForm, userUrl.login(),
         DResponseUser.class);
+    System.out.println(dResponseUser);
     if (dResponseUser != null) {
       Token.API_KEY = dResponseUser.getToken();
       // add role
