@@ -1,0 +1,199 @@
+.toolbar-section {
+  padding:0 10px;
+}
+
+.toolbar-left {
+  display: flex;
+}
+
+.toolbar-left .search-box {
+  border: 1px solid #8B8B8B;
+  border-radius: 10px;
+}
+.toolbar-left .search-box label {
+  padding: 5px 5px 5px 10px;
+}
+.toolbar-left .search-box input {
+  padding: 5px 10px 5px 5px;
+}
+.toolbar-left .search-box .quick-search {
+  border: none;
+}
+
+.quick-search {
+  border: 1px solid #8B8B8B;
+  border-radius: 10px;
+  padding: 5px 0;
+}
+
+.quick-search:focus {
+  outline: none;
+}
+
+.filter-toolbar {
+  position: relative;
+}
+
+.btn-fillter {
+  background-color: rgb(45, 55, 72);
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+  z-index: 2;
+}
+
+
+.filter-toolbar .btn-fillter {
+  background-color: rgb(45, 55, 72);
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.filter-select {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #8B8B8B;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  display: none;
+  z-index: 1;
+  margin-top: 1px;
+  margin-left: 10px;
+  width: 760px;
+  height: 416px;
+  padding: 10px, 20px, 10px, 20px;
+  border-radius: 20px;
+  border: 1px, 0px, 0px, 0px;
+  gap: 50px;
+
+}
+
+.filter-select.active {
+  display: block;
+}
+
+.filter-content {
+  padding: 10px;
+}
+
+.toolbar-right .add-user-btn {
+  background-color: rgb(45, 55, 72);
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.table-user {
+  margin-top: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table-user th {
+  border-top: 2px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-user thead {
+  background-color: rgb(45, 55, 72);
+  color: #fff;
+}
+
+.table-user th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table-user th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.table-user tbody tr td {
+  border-bottom: 1px solid #000;
+  padding: 15px 8px;
+}
+
+.th-id-user {
+  width: 50px;
+  padding-left: 20px;
+}
+
+.th-fullname-user {
+  width: 250px;
+}
+
+.th-email-user {
+  width: 300px;
+}
+
+.th-dob-user {
+  width: 150px;
+}
+
+.th-gender-user, .th-type-user {
+  width: 100px;
+}
+
+.th-function-user {
+  width: 50px;
+}
+
+.td-id-user {
+  padding-left: 20px;
+}
+
+.td-function-user {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.td-fullname-user {
+  font-weight: bold;
+}
+
+.user-type-text.trainer {
+  border:#4DB848 1px solid;
+  padding: 5px 10px;
+  background-color: #4DB848;
+  color: #fff;
+  border-radius: 40px;
+}
+
+.user-type-text.admin {
+  border:#0B2136 1px solid;
+  padding: 5px 10px;
+  background-color: #0B2136;
+  color: #fff;
+  border-radius: 40px;
+}
+
+.user-type-text.super-admin {
+  border:#E74A3B 1px solid;
+  padding: 5px 10px;
+  background-color: #E74A3B;
+  color: #fff;
+  border-radius: 40px;
+}
+
+.btn-user-function {
+  border: none;
+  cursor: pointer;
+  padding: 1px;
+  background-color: #fff;
+  font-size: 24px;
+}
+
+.btn-user-function i {
+  font-size: 24px;
+}

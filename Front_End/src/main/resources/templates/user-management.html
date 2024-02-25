@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syllabus</title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" th:href="@{/css/user-management.css}">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
@@ -48,7 +50,7 @@
 
       <li>
         <a href="#">
-          <i class='bx bx-home' ></i>
+          <i class='bx bx-home'></i>
           <span class="link_name">Home</span>
         </a>
 
@@ -119,7 +121,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-user' ></i>
+            <i class='bx bx-user'></i>
             <span class="link_name">User management</span>
           </a>
           <i class='bx bx-chevron-down arrow'></i>
@@ -134,7 +136,7 @@
 
       <li>
         <a href="#">
-          <i class='bx bx-package' ></i>
+          <i class='bx bx-package'></i>
           <span class="link_name">Learning materials</span>
         </a>
 
@@ -146,7 +148,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-cog'></i>
             <span class="link_name">Setting</span>
           </a>
           <i class='bx bx-chevron-down arrow'></i>
@@ -164,8 +166,105 @@
 
   <section class="main-section">
     <div class="main-content">
-      User Management
+      <h1>User Management</h1>
     </div>
+
+    <div class="toolbar-section flex-content">
+      <div class="toolbar-left">
+        <div class="search-box">
+          <label for="quick-search"><i class='bx bx-search'></i></label>
+          <input id="quick-search" type="text" class="quick-search" placeholder="Search by.....">
+        </div>
+
+        <div class="filter-toolbar">
+          <button class="btn-fillter">
+            <i class='bx bx-sort-down'></i>
+            Filter
+          </button>
+
+          <div class="filter-select">
+            <div class="filter-content">
+              <div class="1th-content flex-content">
+                <div class="class-location">
+
+                </div>
+
+                <div class="class-time-frame">
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar-right">
+        <button id="add-user-btn" class="add-user-btn">
+          <i class='bx bx-plus-circle'></i>
+          Add User
+        </button>
+      </div>
+    </div>
+
+    <table class="table-user">
+      <thead>
+      <tr>
+        <th class="th-id-user">ID <i class='bx bx-menu-alt-left'></i></th>
+        <th class="th-fullname-user">Full name <i class='bx bx-menu-alt-left'></i></th>
+        <th class="th-email-user">Email <i class='bx bx-menu-alt-left'></i></th>
+        <th class="th-dob-user">Date of birth <i class='bx bx-menu-alt-left'></i></th>
+        <th class="th-gender-user">Gender <i class='bx bx-menu-alt-left'></i></th>
+        <th class="th-type-user">Type <i class='bx bx-menu-alt-left'></i></th>
+        <th class="th-function-user"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button class="btn-user-function">
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user"><span class="user-type-text">TRAINER</span></td>
+        <td class="td-function-user">
+          <button class="btn-user-function">
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user"><span class="user-type-text">SUPER_ADMIN</span></td>
+        <td class="td-function-user">
+          <button class="btn-user-function">
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+
   </section>
 </main>
 
@@ -173,5 +272,6 @@
   Copyright @2022 BA Warrior. All right reserverd
 </footer>
 </body>
-<script th:src="@{/js/slide_bar.js}"></script>
+<script th:src="@{/js/slide-bar.js}"></script>
+<script th:src="@{/js/user-management.js}"></script>
 </html>
