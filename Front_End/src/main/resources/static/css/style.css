@@ -268,3 +268,9 @@ footer {
   display: flex;
   align-items: center;
 }
+
+.main-section .main-content h1 {
+  padding:0 10px;
+  color: rgb(45, 55, 72);
+  letter-spacing: 1px;
+}
