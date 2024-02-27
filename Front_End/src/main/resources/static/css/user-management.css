@@ -125,7 +125,7 @@
 }
 
 .th-id-user {
-  width: 50px;
+  width: 6w0px;
   padding-left: 20px;
 }
 
@@ -142,7 +142,7 @@
 }
 
 .th-gender-user, .th-type-user {
-  width: 100px;
+  width: 150px;
 }
 
 .th-function-user {
@@ -196,4 +196,19 @@
 
 .btn-user-function i {
   font-size: 24px;
+}
+
+.popup {
+  position: fixed; /* Đảm bảo popup giữ vị trí tuyệt đối */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  display: none;
+  z-index: 9999;
+  padding: 10px;
+  margin-left: -100px;
+}
+
+.popup.show {
+  display: block;
 }
