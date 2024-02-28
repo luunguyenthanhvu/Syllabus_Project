@@ -69,9 +69,9 @@
   margin-left: 10px;
   width: 760px;
   height: 416px;
-  padding: 10px, 20px, 10px, 20px;
+  padding: 10px 20px 10px 20px;
   border-radius: 20px;
-  border: 1px, 0px, 0px, 0px;
+  border: 1px 0px 0px 0px;
   gap: 50px;
 
 }
@@ -125,7 +125,7 @@
 }
 
 .th-id-user {
-  width: 6w0px;
+  width: 60px;
   padding-left: 20px;
 }
 
@@ -199,7 +199,7 @@
 }
 
 .popup {
-  position: fixed; /* Đảm bảo popup giữ vị trí tuyệt đối */
+  position: fixed;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   border-radius: 5px;
