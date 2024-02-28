@@ -16,6 +16,10 @@ header {
   height: 65px;
   padding-left: 30px;
   padding-right: 30px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 main {
@@ -86,13 +90,11 @@ footer {
 .slidebar {
   position: fixed;
   top: 65px;
-  left: 0;
-  bottom: 65px;
+  bottom:65px;
   width: 260px;
   background: #EDF2F7;
   z-index: 100;
   transition: all 0.5s ease;
-
 }
 
 .slidebar.close {
@@ -127,7 +129,7 @@ footer {
 .slidebar .nav-links li {
   list-style: none;
   position: relative;
-  transition: all 0.4s ease;
+  transition: all 0.4 ease;
 }
 
 .slidebar .nav-links li:hover {
@@ -274,3 +276,59 @@ footer {
   color: rgb(45, 55, 72);
   letter-spacing: 1px;
 }
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.pagination-button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #E2E8F0;
+  border-radius: 100px;
+  color: rgb(45, 55, 72);
+  cursor: pointer;
+}
+
+.next-page {
+  color: rgb(45, 55, 72);
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgb(45, 55, 72);
+  color: #fff;
+}
+
+.dot-pagination {
+  color: rgb(45, 55, 72);
+  cursor: pointer;
+}
+
+.row-per-page {
+  color: rgb(45, 55, 72);
+  cursor: pointer;
+}
+
+.pagging-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.pagination {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.row-per-page {
+  color: rgb(45, 55, 72);
+  cursor: pointer;
+}
+

@@ -16,18 +16,18 @@
 
     <div class="right-content">
       <a href="#">
-        <img th:src="@{/img/fpt_logo.png}" class="fpt-logo" alt="">
+        <img src="/fpt_logo.png" class="fpt-logo" alt="">
       </a>
     </div>
 
     <div class="left-content flex-content">
       <div class="uni-gate-logo flex-content">
-        <img th:src="@{/img/unit_gate.png}" alt="">
+        <img src="/unit_gate.png" alt="">
         <span>uniGate</span>
       </div>
       <div class="account flex-content">
 
-        <img th:src="@{img/user_img.png}" alt="" class="account-img">
+        <img src="/user_img.png" alt="" class="account-img">
 
         <div class="user-content">
           <span class="user-name">Vu Luu</span>
@@ -50,7 +50,7 @@
 
       <li>
         <a href="#">
-          <i class='bx bx-home'></i>
+          <i class='bx bx-home' ></i>
           <span class="link_name">Home</span>
         </a>
 
@@ -121,7 +121,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-user'></i>
+            <i class='bx bx-user' ></i>
             <span class="link_name">User management</span>
           </a>
           <i class='bx bx-chevron-down arrow'></i>
@@ -136,7 +136,7 @@
 
       <li>
         <a href="#">
-          <i class='bx bx-package'></i>
+          <i class='bx bx-package' ></i>
           <span class="link_name">Learning materials</span>
         </a>
 
@@ -148,7 +148,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-cog'></i>
+            <i class='bx bx-cog' ></i>
             <span class="link_name">Setting</span>
           </a>
           <i class='bx bx-chevron-down arrow'></i>
@@ -228,23 +228,61 @@
         <td class="td-gender-user">MALE</td>
         <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
         <td class="td-function-user">
-          <button class="btn-user-function">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
             <i class='bx bx-dots-horizontal-rounded'></i>
           </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
         </td>
       </tr>
 
       <tr>
-        <td class="td-id-user">245</td>
+        <td class="td-id-user">246</td>
         <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
         <td class="td-email-user">vuluu@gmail.com</td>
-        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-dob-user" >08/11/2003</td>
         <td class="td-gender-user">MALE</td>
         <td class="td-type-user"><span class="user-type-text">TRAINER</span></td>
         <td class="td-function-user">
-          <button class="btn-user-function">
+          <button onclick="showUserFunction(246)" class="btn-user-function"> <!-- Pass user ID as parameter -->
             <i class='bx bx-dots-horizontal-rounded'></i>
           </button>
+          <div class="popup" id="popup-246"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-id-user">247</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user" >08/11/2003</td>
+        <td class="td-gender-user">FEMALE</td>
+        <td class="td-type-user"><span class="user-type-text">SUPER_ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(247)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-247"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
         </td>
       </tr>
 
@@ -254,20 +292,232 @@
         <td class="td-email-user">vuluu@gmail.com</td>
         <td class="td-dob-user">08/11/2003</td>
         <td class="td-gender-user">MALE</td>
-        <td class="td-type-user"><span class="user-type-text">SUPER_ADMIN</span></td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
         <td class="td-function-user">
-          <button class="btn-user-function">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
             <i class='bx bx-dots-horizontal-rounded'></i>
           </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
         </td>
       </tr>
 
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-id-user">245</td>
+        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
+        <td class="td-email-user">vuluu@gmail.com</td>
+        <td class="td-dob-user">08/11/2003</td>
+        <td class="td-gender-user">MALE</td>
+        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
+        <td class="td-function-user">
+          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
+            <i class='bx bx-dots-horizontal-rounded'></i>
+          </button>
+          <div class="popup" id="popup-245"> <!-- Unique ID for each popup -->
+            <!-- Nội dung của popup -->
+            <ul>
+              <li><a href="#">Change Role</a></li>
+              <li><a href="#">Deactivate</a></li>
+              <!-- Thêm các chức năng khác tại đây -->
+            </ul>
+          </div>
+        </td>
+      </tr>
       </tbody>
     </table>
 
+    <div class="pagging-page">
+      <div class="pagination">
+        <div class="next-page"> <i class='bx bx-first-page' ></i></div>
+        <div class="next-page"><i class='bx bx-chevron-left'></i> </div>
+        <div class="pagination-button active">1</div>
+        <div class="pagination-button">2</div>
+        <div class="pagination-button">3</div>
+        <div class="dot-pagination"><i class='bx bx-dots-horizontal-rounded' ></i></div>
+        <div class="pagination-button">10</div>
+        <div class="next-page"> <i class='bx bx-chevron-right'></i></div>
+        <div class="next-page"> <i class='bx bx-last-page' ></i></div>
+      </div>
+
+      <div class="row-per-page">Rows per page 10<i class='bx bx-chevron-down'></i></div>
+    </div>
   </section>
 </main>
-
 <footer>
   Copyright @2022 BA Warrior. All right reserverd
 </footer>
