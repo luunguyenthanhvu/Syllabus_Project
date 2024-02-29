@@ -199,18 +199,56 @@
   font-size: 24px;
 }
 
-.popup {
-  position: fixed; /* Đảm bảo popup giữ vị trí tuyệt đối */
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  display: none;
-  z-index: 9999;
-  padding: 10px;
-  margin-left: -100px;
+/* popup add new user */
+.add-new-user-popup {
+  border-radius: 30px;
+}
+.nav-add-new-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-new-user-popup .nav-add-new-user{
+  color: #fff;
+  background: #2D3748;
+  width: 500px;
 }
 
-.popup.show {
-  display: block;
+.add-new-user-popup .nav-add-new-user h3 {
+  text-align: center;
+  flex-grow: 1;
 }
 
+.add-new-user-popup .nav-add-new-user button {
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: none;
+  padding: 0;
+}
+input[type="radio"]:checked + label {
+  color: #2D3748 !important;
+}
+
+/* css for user status */
+.radio-wrapper {
+  border: 1px solid #ccc;
+  background: #D45B13;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  display: inline-block; /* để container chỉ chiếm chiều rộng cần thiết */
+}
+
+.form-pop-up-add-user {
+  padding: 0 40px;
+}
+
+.form-pop-up-add-user label {
+  padding: 30px;
+}
+
+.form-pop-up-add-user table tr {
+  margin-bottom: 10px; /* Đặt khoảng cách dưới cho mỗi dòng */
+}

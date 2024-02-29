@@ -516,6 +516,64 @@
 
       <div class="row-per-page">Rows per page 10<i class='bx bx-chevron-down'></i></div>
     </div>
+    <div class="add-new-user-popup">
+      <div class="nav-add-new-user">
+        <h3>Add a new user</h3>
+        <button><i class='bx bx-x-circle'></i></button>
+      </div>
+
+      <div class=".add-new-user-popup-body">
+        <form action="#" class="form-pop-up-add-user">
+          <table>
+            <tr>
+              <td><label for="usertype">User type</label></td>
+              <td><select name="usertype" id="usertype">
+                <option value="" disabled selected>Select one</option>
+                <option value="">SUPER_ADMIN</option>
+                <option value="">ADMIN</option>
+                <option value="">Trainner</option>
+              </select></td>
+            </tr>
+
+            <tr>
+              <td><label for="add-user-name">Name</label></td>
+              <td><input id="add-user-name" type="text" placeholder="User name"></td>
+            </tr>
+
+            <tr>
+              <td><label for="add-user-email">Email address</label></td>
+              <td><input id="add-user-email" type="email" placeholder="Email address"></td>
+            </tr>
+
+            <tr>
+              <td><label for="add-user-phone">Phone</label></td>
+              <td> <input type="add-user-phone" type="text" placeholder="Phone number"></td>
+            </tr>
+
+            <tr>
+              <td><label for="add-user-dob">Date of birth</label></td>
+              <td><input type="date" id="add-user-dob"></td>
+            </tr>
+
+            <tr>
+              <td> <label> Gender</label></td>
+              <td><input type="radio" name="gender" value="Male" checked> Male
+                <input type="radio" name="gender" value="Female"> Female<td>
+            </tr>
+
+            <tr>
+              <td><label for="statusActive">Status</label></td>
+              <td>
+                <div class="radio-wrapper">
+                  <span class="user-status-text">Active</span>
+                  <input type="radio" name="status" id="statusActive" value="active" checked class="custom-radio">
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
   </section>
 </main>
 <footer>
