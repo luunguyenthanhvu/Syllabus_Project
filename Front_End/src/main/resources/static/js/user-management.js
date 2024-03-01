@@ -29,32 +29,40 @@ userTypeElements.forEach(function(element) {
   }
 });
 
-// pop-up user function
-function showUserFunction(userId) {
-  // Tìm popup cụ thể dựa trên userId
-  var popup = document.getElementById("popup-" + userId);
+// range active, inactive user
+const radioInput = document.getElementById('statusActive');
+let active = true;
+radioInput.addEventListener('click', function() {
+  const statusText = document.querySelector(".user-status-text");
+  if (active) {
+    this.value = 'inactive';
+    statusText.textContent = 'Inactive';
+  } else {
+    this.value = 'active';
+    statusText.textContent = 'Active';
+  }
+  active = !active;
+  console.log(this.value);
+});
 
-  // Tắt tất cả các popup khác
-  var allPopups = document.querySelectorAll('.popup');
-  allPopups.forEach(function(popup) {
-    popup.classList.remove("show");
-  });
+// pop-up add new user
+const addUserBtn = document.getElementById('add-user-btn');
+const addUserPopup = document.getElementById('add-user-popup');
+const overlay = document.getElementById('overlay');
 
-  // Hiển thị hoặc ẩn popup tương ứng
-  popup.classList.toggle("show");
+addUserBtn.addEventListener('click', function() {
+  addUserPopup.style.display = 'block';
+  overlay.style.display = 'block';
+});
 
-  // Lấy tọa độ của con trỏ chuột khi click
-  var x = event.clientX;
-  var y = event.clientY;
+overlay.addEventListener('click', function() {
+  addUserPopup.style.display = 'none';
+  overlay.style.display = 'none';
+});
 
-  // Đặt vị trí của popup
-  popup.style.left = x + 'px';
-  popup.style.top = y + 'px';
-
-  // Lắng nghe sự kiện click bên ngoài popup để đóng nó
-  window.addEventListener("click", function(event) {
-    if (!popup.contains(event.target)) {
-      popup.classList.remove("show");
-    }
-  });
-}
+// close popup
+const closeUserPopup = document.querySelector('.close-pop-up-add-user');
+closeUserPopup.addEventListener('click', function() {
+  addUserPopup.style.display = 'none';
+  overlay.style.display = 'none';
+})

@@ -171,6 +171,9 @@
   border-radius: 40px;
 }
 
+.form-pop-up-add-user table tr td  input[type="email"], input[type="text"],  input[type="date"], select {
+  width: 100%;
+}
 .user-type-text.admin {
   border:#0B2136 1px solid;
   padding: 5px 10px;
@@ -207,11 +210,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
 }
 .add-new-user-popup .nav-add-new-user{
   color: #fff;
   background: #2D3748;
-  width: 500px;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .add-new-user-popup .nav-add-new-user h3 {
@@ -225,6 +231,7 @@
   color: #fff;
   background: none;
   padding: 0;
+  margin-right: 10px;
 }
 input[type="radio"]:checked + label {
   color: #2D3748 !important;
@@ -244,11 +251,69 @@ input[type="radio"]:checked + label {
 .form-pop-up-add-user {
   padding: 0 40px;
 }
+.add-new-user-popup {
+  border-radius: 30px;
+  border: 1px solid #000;
+  width: 500px;
+}
 
 .form-pop-up-add-user label {
   padding: 30px;
 }
 
-.form-pop-up-add-user table tr {
-  margin-bottom: 10px; /* Đặt khoảng cách dưới cho mỗi dòng */
+.form-pop-up-add-user table {
+  border-collapse: separate;
+  border-spacing: 0 20px; /* Cách 20px giữa các hàng */
+}
+
+/* CSS cho overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
+  z-index: 999; /* Đảm bảo overlay hiển thị trên tất cả các phần tử khác */
+  display: none; /* Ẩn ban đầu */
+}
+
+/* CSS cho popup */
+.add-new-user-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none; /* Ẩn ban đầu */
+  z-index: 100000;
+}
+
+.add-new-user-pop-up-function {
+  margin: -15px 150px 15px 150px;
+}
+
+.add-new-user-pop-up-function button {
+  cursor: pointer;
+}
+
+.add-new-user-pop-up-function .cancel-create-user-btn {
+  border: none;
+  background-color: #fff;
+  color: red;
+  text-decoration: underline;
+}
+
+.add-new-user-pop-up-function .save-user-btn {
+  background: #2D3748;
+  border-radius: 10px;
+  padding: 5px 30px;
+  margin: 20px;
+  color: #fff;
+}
+
+input[type='radio'] {
+  cursor: pointer;
 }
