@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -76,4 +77,13 @@ public class User implements Serializable {
     this.password = password;
     this.userPermission = userPermission;
   }
+
+  @Transient
+  public String getRole() {
+    if (userPermission != null) {
+      return userPermission.getRole();
+    }
+    return null;
+  }
+
 }

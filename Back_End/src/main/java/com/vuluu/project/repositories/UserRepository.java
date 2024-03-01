@@ -1,10 +1,12 @@
 package com.vuluu.project.repositories;
 
+import com.vuluu.project.dto.response.forlist.LResponseUser;
 import com.vuluu.project.entities.User;
 import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.Gender;
 import com.vuluu.project.entities.enums.UserStatus;
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,6 +14,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+
+  /**
+   * get all user in system
+   *
+   * @return
+   */
+  @Query("SELECT U FROM User U")
+  public List<LResponseUser> findAllBy();
 
   /**
    * find user by their email

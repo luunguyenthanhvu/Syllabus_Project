@@ -5,12 +5,20 @@ import com.vuluu.project.dto.request.forcreate.CRequestUser;
 import com.vuluu.project.dto.request.forupdate.URequestUser;
 import com.vuluu.project.dto.request.forupdate.UUserPermission;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
+import com.vuluu.project.dto.response.forlist.LResponseUser;
 import com.vuluu.project.entities.User;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface IUserService {
 
+  /**
+   * get all user in system
+   *
+   * @return  List<LResponseUser>
+   */
+  List<LResponseUser> getAll();
   /**
    * Create new user
    *

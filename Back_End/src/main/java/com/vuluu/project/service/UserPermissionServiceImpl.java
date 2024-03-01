@@ -1,12 +1,14 @@
 package com.vuluu.project.service;
 
 import com.vuluu.project.dto.request.forupdate.UPermission;
+import com.vuluu.project.dto.response.forlist.LUserPermission;
 import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.ERole;
 import com.vuluu.project.entities.enums.EUserPermission;
 import com.vuluu.project.repositories.UserPermissionRepository;
 import com.vuluu.project.service.template.IUserPermissionService;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ public class UserPermissionServiceImpl implements IUserPermissionService {
   private ModelMapper modelMapper;
 
   @Override
+  @Transactional
   public void createDefaultUserPermission() {
     List<UserPermission> userPermissionList = userPermissionRepository.findAll();
     // check if exits
@@ -50,20 +53,29 @@ public class UserPermissionServiceImpl implements IUserPermissionService {
   }
 
   @Override
+  @Transactional
   public UserPermission findByRole(ERole role) {
     return userPermissionRepository.findByRole(role);
   }
 
   @Override
+  @Transactional
   public List<UserPermission> findAll() {
     return userPermissionRepository.findAll();
   }
 
   @Override
+  @Transactional
   public List<UserPermission> updatePermission(List<UPermission> uPermission) {
     uPermission.forEach(
         n -> userPermissionRepository.save(modelMapper.map(n, UserPermission.class)));
 
     return userPermissionRepository.findAll();
+  }
+
+  @Override
+  @Transactional
+  public List<LUserPermission> getAll() {
+    return userPermissionRepository.findAllBy();
   }
 }

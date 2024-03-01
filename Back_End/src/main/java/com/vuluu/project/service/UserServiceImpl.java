@@ -5,6 +5,7 @@ import com.vuluu.project.dto.request.forcreate.CRequestUser;
 import com.vuluu.project.dto.request.forupdate.URequestUser;
 import com.vuluu.project.dto.request.forupdate.UUserPermission;
 import com.vuluu.project.dto.response.fordetail.DResponseUser;
+import com.vuluu.project.dto.response.forlist.LResponseUser;
 import com.vuluu.project.entities.User;
 import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.UserStatus;
@@ -15,9 +16,11 @@ import com.vuluu.project.service.template.IUserService;
 import com.vuluu.project.utils.MyUtils;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -48,6 +51,11 @@ public class UserServiceImpl implements IUserService {
   private MyUtils myUtils;
 
   @Override
+  public List<LResponseUser> getAll() {
+    return userRepository.findAllBy();
+  }
+  @Override
+  @Transactional
   public void createUser(User user) {
     if (userRepository.findByEmail(user.getEmail()) == null) {
       userRepository.save(user);
@@ -55,6 +63,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
+  @Transactional
   public DResponseUser login(String email, String password, HttpServletResponse response) {
     User user = userRepository.findByEmailWithUserPermission(email);
 
@@ -84,6 +93,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
+  @Transactional
   public DResponseUser registerUser(RegisterModel registerModel) {
     // check if account is exist
     if (userRepository.findByEmail(registerModel.getEmail()) != null) {
@@ -111,6 +121,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
+  @Transactional
   public DResponseUser createUser(CRequestUser cRequestUser, HttpServletRequest request) {
     //get user info from token
     Authentication authentication = TokenAuthenticationService.getAuthentication(request);
@@ -153,6 +164,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
+  @Transactional
   public DResponseUser updateUserInfo(URequestUser uRequestUser, HttpServletRequest request) {
     //get user info from token
     Authentication authentication = TokenAuthenticationService.getAuthentication(request);
@@ -187,6 +199,7 @@ public class UserServiceImpl implements IUserService {
   }
 
   @Override
+  @Transactional
   public DResponseUser updateUserUserPermission(UUserPermission uUserPermission) {
     // if user not exists
     if (userRepository.findById(uUserPermission.getId()) == null) {
