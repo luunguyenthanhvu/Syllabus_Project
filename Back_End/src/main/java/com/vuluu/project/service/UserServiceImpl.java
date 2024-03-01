@@ -60,7 +60,7 @@ public class UserServiceImpl implements IUserService {
   @Transactional
   public List<LResponseUser> getAll(int page) {
     Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
-    Page<LResponseUser> usersPage = userRepository.findAll(pageable)
+    Page<LResponseUser> usersPage = userRepository.findAllBy(pageable)
         .map(user -> mapUserToResponseUser(user));
     return usersPage.getContent();
   }
