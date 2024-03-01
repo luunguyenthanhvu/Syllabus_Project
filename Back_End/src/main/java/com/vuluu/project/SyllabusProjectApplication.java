@@ -38,8 +38,8 @@ public class SyllabusProjectApplication implements CommandLineRunner {
 //        bCryptPasswordEncoder.encode("vuluu123"), userPermissionList.get(0)
 //    );
 
-    for(int i = 0; i < 100; i++) {
-      User user = new User("vuluu" + i, "vuluu123"+ i +"@gmail.com",
+    for (int i = 0; i < 100; i++) {
+      User user = new User("vuluu" + i, "vuluu123" + i + "@gmail.com",
           bCryptPasswordEncoder.encode("vuluu123"), userPermissionList.get(0)
       );
       userService.createUser(user);

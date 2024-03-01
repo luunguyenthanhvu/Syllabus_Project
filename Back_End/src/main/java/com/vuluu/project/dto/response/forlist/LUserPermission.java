@@ -5,7 +5,7 @@ import com.vuluu.project.entities.enums.EUserPermission;
 
 public interface LUserPermission {
   long getId();
-  ERole getRole();
+  String getRole();
   EUserPermission getSyllabus();
   EUserPermission getTrainingProgram();
   EUserPermission getClasses();

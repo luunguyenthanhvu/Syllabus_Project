@@ -6,6 +6,7 @@ import com.vuluu.project.dto.response.forlist.LUserPermission;
 import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.ERole;
 import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 
 public interface IUserPermissionService {
 
@@ -38,5 +39,6 @@ public interface IUserPermissionService {
    * response list user permission
    * @return
    */
+  @Query("select u from UserPermission u")
   public List<LUserPermission> getAll();
 }
