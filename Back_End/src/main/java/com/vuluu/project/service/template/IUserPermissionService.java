@@ -1,6 +1,7 @@
 package com.vuluu.project.service.template;
 
 import com.vuluu.project.dto.request.forupdate.UPermission;
+import com.vuluu.project.dto.response.forlist.LResponseUser;
 import com.vuluu.project.dto.response.forlist.LUserPermission;
 import com.vuluu.project.entities.UserPermission;
 import com.vuluu.project.entities.enums.ERole;

@@ -8,6 +8,7 @@ import com.vuluu.project.dto.response.fordetail.DResponseUser;
 import com.vuluu.project.dto.response.forlist.LResponseUser;
 import com.vuluu.project.entities.User;
 import com.vuluu.project.entities.UserPermission;
+import com.vuluu.project.entities.enums.Gender;
 import com.vuluu.project.entities.enums.UserStatus;
 import com.vuluu.project.repositories.UserRepository;
 import com.vuluu.project.service.template.IEmailService;
@@ -23,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +35,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements IUserService {
+
+  private final int DEFAULT_PAGE_SIZE = 10;
 
   @Autowired
   private UserRepository userRepository;
@@ -51,9 +57,14 @@ public class UserServiceImpl implements IUserService {
   private MyUtils myUtils;
 
   @Override
-  public List<LResponseUser> getAll() {
-    return userRepository.findAllBy();
+  @Transactional
+  public List<LResponseUser> getAll(int page) {
+    Pageable pageable = PageRequest.of(page, DEFAULT_PAGE_SIZE);
+    Page<LResponseUser> usersPage = userRepository.findAll(pageable)
+        .map(user -> mapUserToResponseUser(user));
+    return usersPage.getContent();
   }
+
   @Override
   @Transactional
   public void createUser(User user) {
@@ -213,5 +224,40 @@ public class UserServiceImpl implements IUserService {
     }
 
     return modelMapper.map(uUserPermission, DResponseUser.class);
+  }
+
+  private LResponseUser mapUserToResponseUser(User user) {
+    LResponseUser responseUser = new LResponseUser() {
+      @Override
+      public long getId() {
+        return user.getId();
+      }
+
+      @Override
+      public String getUsername() {
+        return user.getUsername();
+      }
+
+      @Override
+      public String getEmail() {
+        return user.getEmail();
+      }
+
+      @Override
+      public LocalDateTime getDob() {
+        return user.getDob();
+      }
+
+      @Override
+      public Gender getGender() {
+        return user.getGender();
+      }
+
+      @Override
+      public String getRole() {
+        return user.getRole();
+      }
+    };
+    return responseUser;
   }
 }

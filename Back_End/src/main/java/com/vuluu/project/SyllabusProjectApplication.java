@@ -34,10 +34,17 @@ public class SyllabusProjectApplication implements CommandLineRunner {
 
     List<UserPermission> userPermissionList = userPermissionService.findAll();
     // create a super admin account
-    User user = new User("vuluu", "vuluu123@gmail.com",
-        bCryptPasswordEncoder.encode("vuluu123"), userPermissionList.get(0)
-    );
+//    User user = new User("vuluu", "vuluu123@gmail.com",
+//        bCryptPasswordEncoder.encode("vuluu123"), userPermissionList.get(0)
+//    );
 
-    userService.createUser(user);
+    for(int i = 0; i < 100; i++) {
+      User user = new User("vuluu" + i, "vuluu123"+ i +"@gmail.com",
+          bCryptPasswordEncoder.encode("vuluu123"), userPermissionList.get(0)
+      );
+      userService.createUser(user);
+    }
+
+//    userService.createUser(user);
   }
 }

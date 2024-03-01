@@ -18,7 +18,7 @@ public interface IUserService {
    *
    * @return  List<LResponseUser>
    */
-  List<LResponseUser> getAll();
+  List<LResponseUser> getAll(int page);
   /**
    * Create new user
    *

@@ -8,6 +8,8 @@ import com.vuluu.project.entities.enums.UserStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -21,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
    * @return
    */
   @Query("SELECT U FROM User U")
-  public List<LResponseUser> findAllBy();
+  public Page<User> findAllBy(Pageable pageable);
 
   /**
    * find user by their email
