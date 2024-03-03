@@ -16,18 +16,18 @@
 
     <div class="right-content">
       <a href="#">
-        <img src="/fpt_logo.png" class="fpt-logo" alt="">
+        <img th:src="@{/img/logo.png}" class="fpt-logo" alt="">
       </a>
     </div>
 
     <div class="left-content flex-content">
       <div class="uni-gate-logo flex-content">
-        <img src="/unit_gate.png" alt="">
+        <img th:src="@{/img/unit_gate.png}" alt="">
         <span>uniGate</span>
       </div>
       <div class="account flex-content">
 
-        <img src="/user_img.png" alt="" class="account-img">
+        <img th:src="@{/img/user_img.png}" alt="" class="account-img">
 
         <div class="user-content">
           <span class="user-name">Vu Luu</span>
@@ -50,7 +50,7 @@
 
       <li>
         <a href="#">
-          <i class='bx bx-home' ></i>
+          <i class='bx bx-home'></i>
           <span class="link_name">Home</span>
         </a>
 
@@ -121,7 +121,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-user' ></i>
+            <i class='bx bx-user'></i>
             <span class="link_name">User management</span>
           </a>
           <i class='bx bx-chevron-down arrow'></i>
@@ -136,7 +136,7 @@
 
       <li>
         <a href="#">
-          <i class='bx bx-package' ></i>
+          <i class='bx bx-package'></i>
           <span class="link_name">Learning materials</span>
         </a>
 
@@ -148,7 +148,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-cog'></i>
             <span class="link_name">Setting</span>
           </a>
           <i class='bx bx-chevron-down arrow'></i>
@@ -171,7 +171,7 @@
 
     <div class="toolbar-section flex-content">
       <div class="toolbar-left">
-        <div class="search-box">
+        <div class="search-box flex-content">
           <label for="quick-search"><i class='bx bx-search'></i></label>
           <input id="quick-search" type="text" class="quick-search" placeholder="Search by.....">
         </div>
@@ -220,61 +220,36 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td class="td-id-user">245</td>
-        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
-        <td class="td-email-user">vuluu@gmail.com</td>
-        <td class="td-dob-user">08/11/2003</td>
-        <td class="td-gender-user">MALE</td>
-        <td class="td-type-user admin"><span class="user-type-text">ADMIN</span></td>
-        <td class="td-function-user">
-          <button onclick="showUserFunction(245)" class="btn-user-function"> <!-- Pass user ID as parameter -->
-            <i class='bx bx-dots-horizontal-rounded'></i>
-          </button>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="td-id-user">246</td>
-        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
-        <td class="td-email-user">vuluu@gmail.com</td>
-        <td class="td-dob-user" >08/11/2003</td>
-        <td class="td-gender-user">MALE</td>
-        <td class="td-type-user"><span class="user-type-text">TRAINER</span></td>
-        <td class="td-function-user">
-          <button onclick="showUserFunction(246)" class="btn-user-function"> <!-- Pass user ID as parameter -->
-            <i class='bx bx-dots-horizontal-rounded'></i>
-          </button>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="td-id-user">247</td>
-        <td class="td-fullname-user">Vũ Lưu Nguyễn Thanh</td>
-        <td class="td-email-user">vuluu@gmail.com</td>
-        <td class="td-dob-user" >08/11/2003</td>
-        <td class="td-gender-user">FEMALE</td>
-        <td class="td-type-user"><span class="user-type-text">SUPER_ADMIN</span></td>
-        <td class="td-function-user">
-          <button onclick="showUserFunction(247)" class="btn-user-function"> <!-- Pass user ID as parameter -->
-            <i class='bx bx-dots-horizontal-rounded'></i>
-          </button>
-        </td>
-      </tr>
+      <th:block th:each="user : ${userList}">
+        <tr>
+          <td class="td-id-user" th:text="${user.getId()}"></td>
+          <td class="td-fullname-user" th:text="${user.getUsername()}"></td>
+          <td class="td-email-user" th:text="${user.getEmail()}"></td>
+          <td class="td-dob-user" th:text="${user.getDob()}"></td>
+          <td class="td-gender-user" th:text="${user.getGender()}"></td>
+          <td class="td-type-user admin"><span class="user-type-text" th:text="${user.getRole()}"></span></td>
+          <td class="td-function-user">
+            <button onclick="showUserFunction(245)" class="btn-user-function">
+              <!-- Pass user ID as parameter -->
+              <i class='bx bx-dots-horizontal-rounded'></i>
+            </button>
+          </td>
+        </tr>
+      </th:block>
       </tbody>
     </table>
 
     <div class="pagging-page">
       <div class="pagination">
-        <div class="next-page"> <i class='bx bx-first-page' ></i></div>
-        <div class="next-page"><i class='bx bx-chevron-left'></i> </div>
+        <div class="next-page"><i class='bx bx-first-page'></i></div>
+        <div class="next-page"><i class='bx bx-chevron-left'></i></div>
         <div class="pagination-button active">1</div>
         <div class="pagination-button">2</div>
         <div class="pagination-button">3</div>
-        <div class="dot-pagination"><i class='bx bx-dots-horizontal-rounded' ></i></div>
+        <div class="dot-pagination"><i class='bx bx-dots-horizontal-rounded'></i></div>
         <div class="pagination-button">10</div>
-        <div class="next-page"> <i class='bx bx-chevron-right'></i></div>
-        <div class="next-page"> <i class='bx bx-last-page' ></i></div>
+        <div class="next-page"><i class='bx bx-chevron-right'></i></div>
+        <div class="next-page"><i class='bx bx-last-page'></i></div>
       </div>
 
       <div class="row-per-page">Rows per page 10<i class='bx bx-chevron-down'></i></div>
@@ -311,7 +286,8 @@
 
             <tr>
               <td><label for="add-user-phone">Phone</label></td>
-              <td> <input id="add-user-phone" type="add-user-phone" type="text" placeholder="Phone number"></td>
+              <td><input id="add-user-phone" name="add-user-phone" type="text"
+                         placeholder="Phone number"></td>
             </tr>
 
             <tr>
@@ -320,9 +296,10 @@
             </tr>
 
             <tr>
-              <td> <label> Gender</label></td>
+              <td><label> Gender</label></td>
               <td><input type="radio" name="gender" value="Male" checked> Male
-                <input type="radio" name="gender" value="Female"> Female<td>
+                <input type="radio" name="gender" value="Female"> Female
+              <td>
             </tr>
 
             <tr>
@@ -330,14 +307,16 @@
               <td>
                 <div class="radio-wrapper">
                   <span class="user-status-text">Active</span>
-                  <input type="radio" name="status" id="statusActive" value="active" checked class="custom-radio">
+                  <input type="radio" name="status" id="statusActive" value="active" checked
+                         class="custom-radio">
                 </div>
               </td>
             </tr>
           </table>
 
           <div class="add-new-user-pop-up-function flex-content">
-            <button class="cancel-create-user-btn">Cancel</button><button class="cancel-create-user-btn">Cancel</button>
+            <button class="cancel-create-user-btn">Cancel</button>
+            <button class="cancel-create-user-btn">Cancel</button>
             <button id="save-new-user-btn" class="save-user-btn">Save</button>
           </div>
         </form>

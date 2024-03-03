@@ -13,7 +13,7 @@
 <header>
   <div class="logo">
     <a href="#">
-      <img th:src="@{/img/logo.png}" alt="">
+      <img th:src="@{/img/logo.png}" class="fpt-logo" alt="">
     </a>
   </div>
   <div class="user">
@@ -24,6 +24,7 @@
   </div>
 </header>
 <!-- End header -->
+<img th:src="@{/img/login.png}" alt="Background Image" class="background-image">
 <div class="img wrapper">
   <div class="login-form">
     <form method="post" th:object="${loginForm}" th:action="@{login}">

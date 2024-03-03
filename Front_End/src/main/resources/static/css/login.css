@@ -460,7 +460,6 @@ footer {
   background-size: 100% 100%; /* Đảm bảo hiển thị toàn bộ chiều ngang */
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("/static/img/login.png");
   position: relative; /* Đặt vị trí tương đối cho .img */
   margin-bottom: -12px;
   padding: 20px;
@@ -555,4 +554,15 @@ button:hover {
   background: #FFFFFF;
   color: #2D3748;
   transition: background-color 0.3s ease;
+}
+
+.background-image {
+  position: fixed;
+  top: 65px; /* Khoảng cách từ header */
+  bottom: 65px; /* Khoảng cách từ footer */
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1; /* Đặt z-index thấp hơn để đảm bảo nó nằm dưới header và footer */
 }
