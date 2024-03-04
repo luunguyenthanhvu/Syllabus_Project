@@ -263,7 +263,7 @@
       </div>
 
       <div class="add-new-user-popup-body">
-        <form action="#" class="form-pop-up-add-user">
+        <form th:action="@{/admin/add/new-user}" th:object="${user}" class="form-pop-up-add-user">
           <table>
             <tr>
               <td><label for="usertype">User type</label></td>
